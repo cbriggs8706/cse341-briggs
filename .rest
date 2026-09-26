@@ -1,4 +1,19 @@
-GET http://localhost:3000 HTTP/1.1
+GET http://localhost:8080 HTTP/1.1
 
 ###
-GET http://localhost:3000/awesome HTTP/1.1
+GET http://localhost:8080/awesome HTTP/1.1
+
+###
+GET https://cse341-briggs.onrender.com/ HTTP/1.1
+
+###
+GET http://localhost:8080/contacts HTTP/1.1
+
+###
+GET http://localhost:8080/contacts/?id=6ab82d50577ff174883468a0 HTTP/1.1
+
+###
+GET https://cse341-briggs.onrender.com/contacts
+
+###
+GET https://cse341-briggs.onrender.com/contacts?id=6ab82d50577ff174883468a0
