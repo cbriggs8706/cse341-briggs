@@ -13,7 +13,62 @@ GET http://localhost:8080/contacts HTTP/1.1
 GET http://localhost:8080/contacts/6ab82d50577ff174883468a0 HTTP/1.1
 
 ###
-GET https://cse341-briggs.onrender.com/contacts
+GET https://cse341-briggs.onrender.com/contacts HTTP/1.1
 
 ###
-GET https://cse341-briggs.onrender.com/contacts/6ab82d50577ff174883468a0
+GET https://cse341-briggs.onrender.com/contacts/6ab82d50577ff174883468a0 HTTP/1.1
+
+###
+POST http://localhost:8080/contacts HTTP/1.1
+Content-Type: application/json
+
+{
+    "firstName": "Wasilla",
+    "lastName": "Wallaby",
+    "email": "ww@example.com",
+    "favoriteColor": "blue",
+    "birthday": "2000-01-01"
+}
+
+###
+PUT http://localhost:8080/contacts/6ab82d50577ff174883468a0 HTTP/1.1
+Content-Type: application/json
+
+{
+    "firstName": "Jack",
+    "lastName": "Doe",
+    "email": "jack.doe@example.com",
+    "favoriteColor": "blue",
+    "birthday": "1990-01-01"
+}
+
+###
+DELETE http://localhost:8080/contacts/6ac1d81920cf76b582aade1e HTTP/1.1
+
+
+###
+POST http://cse341-briggs.onrender.com/contacts HTTP/1.1
+Content-Type: application/json
+
+{
+    "firstName": "Wasilla",
+    "lastName": "Wallaby",
+    "email": "ww@example.com",
+    "favoriteColor": "blue",
+    "birthday": "2000-01-01"
+}
+
+###
+PUT http://cse341-briggs.onrender.com/contacts/6ab82d50577ff174883468a0 HTTP/1.1
+Content-Type: application/json
+
+{
+    "firstName": "Jack",
+    "lastName": "Doe",
+    "email": "jack.doe@example.com",
+    "favoriteColor": "blue",
+    "birthday": "1990-01-01"
+}
+
+###
+DELETE http://cse341-briggs.onrender.com/contacts/6ac1d81920cf76b582aade1e HTTP/1.1
