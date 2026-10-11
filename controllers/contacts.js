@@ -1,7 +1,11 @@
 const mongodb = require('../db/connect')
 const ObjectId = require('mongodb').ObjectId
 
-const getAll = async (req, res, next) => {
+const getAllContacts = async (req, res, next) => {
+	/* #swagger.responses[200] = {
+  description: 'All contacts.',
+  schema: [{ $ref: '#/definitions/Contact' }]
+} */
 	const results = await mongodb.getDb().collection('contacts').find()
 	results.toArray().then((lists) => {
 		res.setHeader('Content-Type', 'application/json')
@@ -9,7 +13,11 @@ const getAll = async (req, res, next) => {
 	})
 }
 
-const getSingle = async (req, res, next) => {
+const getContactById = async (req, res, next) => {
+	/* #swagger.responses[200] = {
+  description: 'The requested contact.',
+  schema: { $ref: '#/definitions/Contact' }
+} */
 	const userId = new ObjectId(req.params.id)
 	const result = await mongodb
 		.getDb()
@@ -22,7 +30,13 @@ const getSingle = async (req, res, next) => {
 }
 
 const createContact = async (req, res) => {
-	// const contact = req.body
+	/* #swagger.parameters['body'] = {
+  in: 'body',
+  required: true,
+  description: 'The contact to create.',
+  schema: { $ref: '#/definitions/Contact' }
+	
+} */
 	const contact = {
 		firstName: req.body.firstName,
 		lastName: req.body.lastName,
@@ -41,10 +55,16 @@ const createContact = async (req, res) => {
 			.status(500)
 			.json(response.error || 'Some error occurred while creating the contact.')
 	}
-	res.json(contact)
 }
 
 const updateContact = async (req, res) => {
+	/* #swagger.parameters['body'] = {
+  in: 'body',
+  required: true,
+  description: 'The contact to update.',
+  schema: { $ref: '#/definitions/Contact' }
+	
+} */
 	const userId = new ObjectId(req.params.id)
 	const contact = req.body
 	const result = await mongodb
@@ -70,8 +90,8 @@ const deleteContact = async (req, res) => {
 }
 
 module.exports = {
-	getAllContacts: getAll,
-	getContactById: getSingle,
+	getAllContacts: getAllContacts,
+	getContactById: getContactById,
 	createContact: createContact,
 	updateContact: updateContact,
 	deleteContact: deleteContact,
