@@ -6,7 +6,13 @@ const apiDocument = require('./swagger.json')
 
 const port = process.env.PORT || 8080
 const app = express()
+const cors = require('cors')
 
+app.use(
+	cors({
+		origin: 'https://cse341-contacts-frontend.netlify.app',
+	}),
+)
 app.use(bodyParser.json())
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(apiDocument))
 app.use('/', require('./routes'))
